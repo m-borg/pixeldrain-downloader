@@ -2,7 +2,7 @@
 
 A native SwiftUI macOS app combining automatic Pixeldrain bypass proxy routing (`pixeldrain-bypass.cybar.to`) with the CDN mirror-cycling `aria2c` download engine from [`pixeldrain.sh`](pixeldrain.sh).
 
-![Pixeldrain Downloader screenshot](assets/screenshot.jpg)
+<img src="assets/screenshot.jpg" alt="Pixeldrain Downloader screenshot" width="520" />
 
 ## Features
 
