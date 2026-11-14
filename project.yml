@@ -1,0 +1,48 @@
+name: PixeldrainDownloader
+options:
+  bundleIdPrefix: com.local
+  deploymentTarget:
+    macOS: "14.0"
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    CODE_SIGN_IDENTITY: "-"
+    ENABLE_HARDENED_RUNTIME: NO
+targets:
+  PixeldrainDownloader:
+    type: application
+    platform: macOS
+    sources:
+      - path: PixeldrainDownloader
+    info:
+      path: PixeldrainDownloader/Info.plist
+    settings:
+      base:
+        PRODUCT_NAME: "Pixeldrain Downloader"
+        PRODUCT_MODULE_NAME: PixeldrainDownloader
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.pixeldrain-downloader
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        GENERATE_INFOPLIST_FILE: NO
+  PixeldrainDownloaderTests:
+    type: bundle.unit-test
+    platform: macOS
+    sources:
+      - path: PixeldrainDownloaderTests
+    dependencies:
+      - target: PixeldrainDownloader
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.local.pixeldrain-downloader-tests
+        GENERATE_INFOPLIST_FILE: YES
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Pixeldrain Downloader.app/Contents/MacOS/Pixeldrain Downloader"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+schemes:
+  PixeldrainDownloader:
+    build:
+      targets:
+        PixeldrainDownloader: all
+        PixeldrainDownloaderTests: [test]
+    test:
+      targets:
+        - PixeldrainDownloaderTests
